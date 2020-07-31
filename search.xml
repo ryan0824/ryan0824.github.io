@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>mysql问题总结</title>
+      <link href="/2020/07/20/ysql%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"/>
+      <url>/2020/07/20/ysql%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<p>1、解决Lost connection to MySQL server during query错误方法<br>可能原因：插入的数据比较大，而mysql允许的最大服务比较小<br>解决办法：<br><img src= "/img/loading.gif" data-src="https://my-pic-bed-01.oss-cn-shenzhen.aliyuncs.com/img/20200720144614.png" alt="image-20200720144607226"><br>亲测有效<br>2、解决连接jdbc失败，比如报错：<br>Possibly consider using a shorter maxLifetime value.<br>org.springframework.jdbc.CannotGetJdbcConnectionException<br>…<br>可能的原因：maxLifetime这个参数配置不合理<br>解决办法：配置调优</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hikari:</span><br><span class="line">  connection-timeout: <span class="number">60000</span></span><br><span class="line"> validation-timeout: <span class="number">3000</span></span><br><span class="line"> idle-timeout: <span class="number">60000</span></span><br><span class="line"> login-timeout: <span class="number">5</span></span><br><span class="line"> max-lifetime: <span class="number">60000</span></span><br><span class="line">  maximum-pool-size: <span class="number">10</span></span><br><span class="line">  minimum-idle: <span class="number">10</span></span><br><span class="line">  read-only: <span class="keyword">false</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>谷粒学院day11—权限管理和配置中心</title>
       <link href="/2020/07/18/%E5%AD%A6%E9%99%A2day11%E2%80%94%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/"/>
       <url>/2020/07/18/%E5%AD%A6%E9%99%A2day11%E2%80%94%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/</url>
